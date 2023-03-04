@@ -1,0 +1,14 @@
+#setup{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+#setup>*{
+    width: 100%;
+}
+
+#setup .change{
+    width: 50%;
+    box-sizing: border-box;
+}
