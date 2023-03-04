@@ -33,7 +33,14 @@ function Setup(props) {
             }
             users.push({id: i, name: val.trim()})
         }
-        setData({users: users, records:[]})
+        setData({users: users, records:[{
+            id:0,
+            sugar:0,
+            shakur:0,
+            desc: "besmellah",
+            amount: 0,
+            time: Date.now()
+        }]})
         setShouldSetup(false)
     }
 

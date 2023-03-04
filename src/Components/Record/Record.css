@@ -1,0 +1,39 @@
+.records{
+    margin-top: 20px;
+    padding: 5px 10px;
+    display: block;
+}
+.records>*{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+}
+
+.records>* .id{
+    width: 30px;
+}
+
+.records>*:not(div:first-child):not(div:last-child){
+    border-radius: 0;
+}
+
+.records>*:first-child{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.records>*:last-child{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.records hr{
+    border: none;
+    background: none;
+    border-top: 1px solid rgba( 55, 55, 55, 0.18 );
+}
+
+.records>*:hover {
+    color: darkred;
+    cursor: pointer;
+}

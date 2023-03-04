@@ -3,9 +3,33 @@ body,
 h1,h2,h3,h4,h5,h6,
 p,
 ul,li,
-a{
+a,
+hr{
   list-style: none;
   text-decoration: none;
   margin: 0;
   padding: 0;
+}
+
+body{
+  --c1: #FFC8DD;
+  --c2: #BDE0FE;
+  --c3: #CDB4DB;
+  --c4: #A2D2FF;
+  background: rgb(238,174,202) fixed;
+background: radial-gradient(circle,
+  var(--c1) 23%,
+  var(--c2) 100%) fixed;
+  max-width: 1000px;
+  margin: auto auto 25px auto;
+  padding: 25px;
+}
+
+.glass{
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 3.5px );
+  -webkit-backdrop-filter: blur( 3.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
