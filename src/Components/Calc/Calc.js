@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil"
 import dataAtom from "../../Atoms/dataAtom"
 import spacer33 from "../../helpers/spacer33"
 
-function Calc(props){
+function Calc(){
     const [data, setData] = useRecoilState(dataAtom)
 
     const userCount = data.users.length
