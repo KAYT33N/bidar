@@ -4,7 +4,6 @@ import dataAtom from "../../Atoms/dataAtom"
 import Calc from "../Calc/Calc"
 import Record from "../Record/Record"
 import "./Home.css"
-import spacer33 from "../../helpers/spacer33"
 import AddModal from "../AddModal/AddModal"
 
 function Home() {
