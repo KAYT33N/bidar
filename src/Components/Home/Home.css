@@ -36,10 +36,6 @@
     width: 60px;
 }
 
-.addModal.hide{
-    display: none !important;
-}
-
 .addModal{
     display: flex;
     position: fixed;
