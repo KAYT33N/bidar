@@ -4,26 +4,13 @@ import dataAtom from "../../Atoms/dataAtom"
 import Calc from "../Calc/Calc"
 import Record from "../Record/Record"
 import "./Home.css"
+import spacer33 from "../../helpers/spacer33"
 
 function Home() {
     const [data, setData] = useRecoilState(dataAtom)
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 
     const [newRecord,setNewRecord] = useState({sugar_id:0,shakur_id:0,amount:0,desc:""})
-
-    function spacer33(num){
-        let str = ""+num
-        let res = ""
-        let count = str.length;
-        for (let i = 0; i < count; i++){
-            if((count-i)%3 == 0 && i != 0){
-                res+= "`"+str[i]
-            }else{
-                res+=str[i]
-            }
-        }
-        return res
-    }
 
     function passNewToFunc(){
         addRecord(
@@ -70,7 +57,7 @@ function Home() {
         <div>
             <div className="info">
                 <div className="chart glass">
-                    <Calc spacer33={spacer33}/>
+                    <Calc />
                 </div>
                 <div className="controlls">
                     <div className="add glass" onClick={()=>{setIsAddModalOpen(true)}}>

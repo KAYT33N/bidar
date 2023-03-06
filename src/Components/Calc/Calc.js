@@ -1,6 +1,6 @@
-import { useEffect } from "react"
 import { useRecoilState } from "recoil"
 import dataAtom from "../../Atoms/dataAtom"
+import spacer33 from "../../helpers/spacer33"
 
 function Calc(props){
     const [data, setData] = useRecoilState(dataAtom)
@@ -33,7 +33,7 @@ function Calc(props){
             .map(item=>{
                 return (<>
                     <li>
-                        <b>{data.users[item.i].name}</b> should ekh kone <b>{props.spacer33(item.amount)}</b> toman be <b>{data.users[item.j].name}</b>
+                        <b>{data.users[item.i].name}</b> should ekh kone <b>{spacer33(item.amount)}</b> toman be <b>{data.users[item.j].name}</b>
                     </li>
                 </>)
             })}
