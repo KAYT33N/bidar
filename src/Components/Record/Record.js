@@ -16,6 +16,9 @@ function Record(props) {
             {props.shakur.name}
             &nbsp;about&nbsp;
             {props.record.desc}
+            <div className="onHover">
+                <img src="svgs/trash.svg"/>
+            </div>
         </div>
     )
 }
