@@ -47,10 +47,13 @@ function Setup(props) {
     return (
         <div id="setup">
             <h1>enter users</h1>
-            <button className="change" onClick={()=>{changeCount(-1)}}>sub</button>
-            <button className="change" onClick={()=>{changeCount(+1)}}>add</button>
+            <span>this is a one time setup</span>
             {rows}
-            <button className="confirm" onClick={()=>{validate()}}>{setShouldSetup? "true" : "fasle"}</button>
+            <div className="buttons">
+                <button className="change" onClick={()=>{changeCount(-1)}}>sub</button>
+                <button className="change" onClick={()=>{changeCount(+1)}}>add</button>
+                <button className="confirm" onClick={()=>{validate()}}>confirm</button>
+            </div>
         </div>
     )
 }
