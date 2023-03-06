@@ -105,8 +105,13 @@
     margin-left: 10px;
 }
 
-.buttons .add{
-    border-color: black !important;
+.buttons button.add{
+    background-color: darkgray;
+    color: white;
+    font-weight: bolder;
+}
+.buttons button.add:hover{
+    background-color: var(--c3);
 }
 
 .chart{
