@@ -5,10 +5,12 @@ import Calc from "../Calc/Calc"
 import Record from "../Record/Record"
 import "./Home.css"
 import AddModal from "../AddModal/AddModal"
+import Settings from "../Settings/Settings"
 
 function Home() {
     const [data, setData] = useRecoilState(dataAtom)
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+    const [isSettingModalOpen, setIsSettingModalOpen] = useState(false)
 
     function removeRecord(id) {
         setData(prev=>{
@@ -28,10 +30,14 @@ function Home() {
                     <Calc />
                 </div>
                 <div className="controlls">
-                    <div className="add glass" onClick={()=>{setIsAddModalOpen(true)}}>
+                    <div 
+                        className="add glass" 
+                        onClick={()=>{setIsAddModalOpen(true)}}>
                         <img src="svgs/add.svg"/>
                     </div>
-                    <div className="setting glass">
+                    <div 
+                        className="setting glass"
+                        onClick={()=>{setIsSettingModalOpen}}>
                         <img src="svgs/gear.svg"/>
                     </div>
                 </div>
@@ -50,6 +56,11 @@ function Home() {
             {
                 isAddModalOpen
                     ? <AddModal closeModal={setIsAddModalOpen}/>
+                    : ""
+            }
+            {
+                isSettingModalOpen
+                    ? <Settings closeModal={setIsSettingModalOpen}/>
                     : ""
             }
         </div>

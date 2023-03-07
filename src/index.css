@@ -11,6 +11,10 @@ hr{
   padding: 0;
 }
 
+* {
+  font-family: Arial, sans-serif;
+}
+
 body{
   --c1: #FFC8DD;
   --c2: #BDE0FE;
@@ -32,4 +36,47 @@ background: radial-gradient(circle,
   -webkit-backdrop-filter: blur( 3.5px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.setModal .jobs>*{
+  margin-top: 10px;
+}
+
+.setModal .jobs h4{
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+
+}
+
+.setModal .jobs h4>span{
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 19px;
+}
+
+.setModal .jobs .open h4>span{
+  transform: rotateZ(90deg);
+}
+
+.setModal .jobs>*>*:not(h4){
+  display: none;
+}
+
+.setModal .jobs>*.open>*:not(h4){
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width:100%;
+  max-width: 100%;
+}
+
+.setModal h5{
+  color: black;
+  margin: 5px;
 }
