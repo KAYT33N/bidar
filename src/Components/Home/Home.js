@@ -37,7 +37,7 @@ function Home() {
                     </div>
                     <div 
                         className="setting glass"
-                        onClick={()=>{setIsSettingModalOpen}}>
+                        onClick={()=>{setIsSettingModalOpen(true)}}>
                         <img src="svgs/gear.svg"/>
                     </div>
                 </div>
