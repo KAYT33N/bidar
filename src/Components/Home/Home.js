@@ -49,7 +49,7 @@ function Home() {
             </div>
             {
                 isAddModalOpen
-                    ? <AddModal setIsAddModalOpen={setIsAddModalOpen}/>
+                    ? <AddModal closeModal={setIsAddModalOpen}/>
                     : ""
             }
         </div>

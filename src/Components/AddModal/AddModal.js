@@ -98,7 +98,7 @@ function AddModal(props){
                         })}} />
                 </div>
                 <div className="buttons">
-                    <button className="cancel" onClick={()=>{props.setIsAddModalOpen(false)}}>
+                    <button className="cancel" onClick={()=>{props.closeModal(false)}}>
                         cancel
                     </button>
                     <button className="add" onClick={()=>{passNewToFunc()}}>
