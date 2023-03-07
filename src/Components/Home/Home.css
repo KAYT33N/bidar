@@ -87,7 +87,7 @@
 .addModal .content .buttons>*{
     width: 50%;
     border-radius: 20px;
-    border: black 5px solid var(--c3) !important;
+    border: 2px solid var(--c3);
     height: 30px;
     outline: none !important;
     box-sizing: border-box;
@@ -101,13 +101,16 @@
     margin-left: 10px;
 }
 
-.buttons button.add{
-    background-color: darkgray;
+.addModal .buttons button.add{
+    background-color: var(--c3);
     color: white;
     font-weight: bolder;
 }
-.buttons button.add:hover{
-    background-color: var(--c3);
+
+.addModal .buttons button:hover{
+    background-color: rgb(65, 65, 65);
+    color: whitesmoke;
+    border: 2px solid rgb(65, 65, 65);
 }
 
 .chart{

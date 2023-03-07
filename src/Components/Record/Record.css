@@ -33,7 +33,7 @@
     border-top: 1px solid rgba( 55, 55, 55, 0.18 );
 }
 
-.records>*:hover {
+.records>div:hover {
     cursor: pointer;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .records>div>.onHover{
-    display: none;
+    opacity: 0;
     position: absolute;
     width: calc(100% + 10px);
     height: calc(100% + 10px);
@@ -56,10 +56,12 @@
     border: 2px solid white;
     box-shadow: 0 0 0 2px darkred;
     box-sizing: border-box;
+    display: flex;
+    transition: 200ms;
 }
 
 .records>div:hover>.onHover{
-    display: flex;
+    opacity: 1;
 }
 
 .records img{
