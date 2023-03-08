@@ -1,0 +1,32 @@
+.addModal .table{
+    display: flex !important;
+    flex-direction: row;
+    margin-bottom: 10px;
+    border: 2px solid var(--c3);
+    background-color: white;
+    border-radius: 10px;
+    min-height: 30px;
+    overflow: hidden;
+}
+
+.addModal .table>*{
+    width: 50%;
+}
+
+.addModal .table>*:first-child{
+    border-right: 2px solid var(--c3);
+}
+
+.addModal .table>*>*{
+    padding: 2px 5px;
+    text-align: center;
+}
+
+.addModal .table>*>*:first-child{
+    background-color: var(--c3);
+    border-bottom: 2px solid whitesmoke;
+}
+
+.addModal .selected{
+    background-color: var(--c3);
+}

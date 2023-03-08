@@ -46,7 +46,7 @@ function Home() {
                 {data.records.map((item, index) => <>
                     {(index === records_len) ? "" : <hr/>}
                     <Record 
-                        key={item.id} 
+                        key={"Record_"+item.id} 
                         record={item} 
                         sugar={data.users[item.sugar]} 
                         shakur={data.users[item.shakur]}

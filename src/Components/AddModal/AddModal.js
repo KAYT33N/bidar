@@ -2,26 +2,42 @@ import spacer33 from "../../helpers/spacer33"
 import { useState,  } from "react"
 import { useRecoilState } from "recoil"
 import dataAtom from "../../Atoms/dataAtom"
+import "./AddModal.css"
 
 function AddModal(props){
-    const [newRecord, setNewRecord] = useState({sugar_id:0,shakur_id:0,amount:0,desc:""})
+    const [newRecord, setNewRecord] = useState({sugar_id:0,shakurs:[],amount:0,desc:""})
     const [data, setData] = useRecoilState(dataAtom)
 
-    function passNewToFunc(){
-        addRecord(
-            newRecord.sugar_id,
-            newRecord.shakur_id,
-            newRecord.amount,
-            newRecord.desc
-        )
+    function toggleAddShakur(id){
+        setNewRecord(prev=>{
+            if (prev.shakurs.includes(id)){
+                return ({
+                    sugar_id: prev.sugar_id,
+                    shakurs: prev.shakurs.filter(item=>{ return item!=id}),
+                    amount: prev.amount,
+                    desc: prev.desc
+                })
+            }else{
+                return ({
+                    sugar_id: prev.sugar_id,
+                    shakurs: [...prev.shakurs,id],
+                    amount: prev.amount,
+                    desc: prev.desc
+                })
+            }
+        })
     }
 
-    const options = 
-        data
-            .users
-            .map( user =>
-                <option value={user.id}>{user.name}</option>
-                )
+    function passNewToFunc(){
+        newRecord.shakurs.map(item=>{
+            addRecord(
+                newRecord.sugar_id,
+                item,
+                (newRecord.amount/(newRecord.shakurs.length)),
+                newRecord.desc
+            )
+        })
+    }
 
     function addRecord(sugar_id, shakur_id, amount, desc) {
         setData(prev=>{
@@ -43,39 +59,54 @@ function AddModal(props){
     }
 
     return (
-        <div className={"addModal"}>
+        <div className="addModal">
             <div className="glass content">
                 <div className="form">
-                    <label htmlFor="new_rec_sugar_id">sugar : </label>
-                    <select 
-                        id="new_rec_sugar_id"
-                        onChange={(e)=>{setNewRecord(prev=>{
-                            return {
-                                sugar_id: parseInt(e.target.value),
-                                shakur_id: prev.shakur_id,
-                                amount: prev.amount,
-                                desc: prev.desc
-                            }
-                        })}}
-                        >{options}</select>
-                    <label htmlFor="new_rec_sakur_id">shakur : </label>
-                    <select 
-                        id="new_rec_sakur_id"
-                        onChange={(e)=>{setNewRecord(prev=>{
-                            return {
-                                sugar_id: prev.sugar_id,
-                                shakur_id: parseInt(e.target.value),
-                                amount: prev.amount,
-                                desc: prev.desc
-                            }
-                        })}}
-                        >{options}</select>
+                    <div className="table no-select">
+                        <div>
+                            <div>
+                                sugar
+                            </div>
+                            {data.users.map((item) => {
+                                return (
+                                    <div
+                                        key={"sugar_id_select_"+item.id}
+                                        className={newRecord.sugar_id===item.id ? "selected" : ""} 
+                                        onClick={()=>{setNewRecord(prev=>{
+                                            return {
+                                                sugar_id: item.id,
+                                                shakurs: prev.shakurs,
+                                                amount: prev.amount,
+                                                desc: prev.desc
+                                            }
+                                        })}}>
+                                        {item.name}
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        <div>
+                            <div>
+                                shakur(s)
+                            </div>
+                            {data.users.map((item) => {
+                                return (
+                                    <div
+                                        key={"shakur_id_select_"+item.id}
+                                        className={newRecord.shakurs.includes(item.id) ? "selected" : ""}
+                                        onClick={(()=>{toggleAddShakur(item.id)})}>
+                                        {item.name}
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
                     <label htmlFor="new_rec_amount">amount : {spacer33(newRecord.amount)} toman</label>
                     <input 
                         onChange={(e)=>{setNewRecord(prev=>{
                             return {
                                 sugar_id: prev.sugar_id,
-                                shakur_id: prev.shakur_id,
+                                shakurs: prev.shakurs,
                                 amount: parseInt(e.target.value),
                                 desc: prev.desc
                             }
@@ -91,7 +122,7 @@ function AddModal(props){
                         onChange={(e)=>{setNewRecord(prev=>{
                             return {
                                 sugar_id: prev.sugar_id,
-                                shakur_id: prev.shakur_id,
+                                shakurs: prev.shakurs,
                                 amount: prev.amount,
                                 desc: e.target.value.trim()
                             }

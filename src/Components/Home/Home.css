@@ -67,7 +67,7 @@
     box-sizing: border-box;
 }
 
-.addModal .content .form>*:not(label){
+.addModal .content .form>*:not(label,.table){
     margin-bottom: 10px;
     border: 2px solid var(--c3);
     background-color: white;

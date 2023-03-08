@@ -1,3 +1,4 @@
+import spacer33 from "../../helpers/spacer33"
 import "./Record.css"
 
 function Record(props) {
@@ -11,7 +12,7 @@ function Record(props) {
         <div onClick={()=>{removeThis(props.record.id)}}>
             {props.sugar.name}
             &nbsp;gave&nbsp;
-            {props.record.amount}
+            {spacer33(parseInt(props.record.amount))}
             &nbsp;toman to&nbsp;
             {props.shakur.name}
             &nbsp;about&nbsp;

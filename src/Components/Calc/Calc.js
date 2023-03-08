@@ -31,11 +31,11 @@ function Calc(){
             {uneavens
             .filter(item => item.amount>0)
             .map(item=>{
-                return (<>
-                    <li>
-                        <b>{data.users[item.i].name}</b> should ekh kone <b>{spacer33(item.amount)}</b> toman be <b>{data.users[item.j].name}</b>
+                return (
+                    <li key={"bedehi_"+item.id}>
+                        <b>{data.users[item.i].name}</b> should ekh kone <b>{spacer33(parseInt(item.amount))}</b> toman be <b>{data.users[item.j].name}</b>
                     </li>
-                </>)
+                )
             })}
         </ul>
     )
