@@ -51,6 +51,17 @@ function Settings(props){
         }
     }
 
+    function resetRecords(){
+        if (window.confirm("goh khordam nadare ha !")){
+            setData(prev => {
+                return ({
+                    users: prev.users,
+                    records: []
+                })
+            })
+        }
+    }
+
     return (
         <div className="setModal">
             <div className="glass content">
@@ -98,6 +109,16 @@ function Settings(props){
                         <button
                             onClick={()=>{addUser()}}>
                             add new user
+                        </button>
+                    </div>
+                    <div className={"DeleteAll "+(openJob === "DeleteAll" ? "open" : "")}>
+                        <h4 onClick={()=>{toggle("DeleteAll")}}>
+                            <span>&gt;</span>
+                            kolllle kharja pak shan
+                        </h4>
+                        <button
+                            onClick={()=>{resetRecords()}}>
+                                hammmaaasshhhhh ?
                         </button>
                     </div>
                 </div>
