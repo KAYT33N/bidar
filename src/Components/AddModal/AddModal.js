@@ -28,6 +28,26 @@ function AddModal(props){
         })
     }
 
+    function selectAllShakurs(){
+        setNewRecord(prev=>{
+            if (prev.shakurs.length === data.users.length){
+                return ({
+                    sugar_id: prev.sugar_id,
+                    shakurs: [],
+                    amount: prev.amount,
+                    desc: prev.desc
+                })
+            }else{
+                return ({
+                    sugar_id: prev.sugar_id,
+                    shakurs: data.users.map(item=>item.id),
+                    amount: prev.amount,
+                    desc: prev.desc
+                })
+            }
+        })
+    }
+
     function passNewToFunc(){
         newRecord.shakurs.map(item=>{
             addRecord(
@@ -86,7 +106,8 @@ function AddModal(props){
                             })}
                         </div>
                         <div>
-                            <div>
+                            <div 
+                                onClick={()=>{selectAllShakurs()}}>
                                 shakur(s)
                             </div>
                             {data.users.map((item) => {
