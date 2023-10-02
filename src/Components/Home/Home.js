@@ -6,6 +6,7 @@ import Record from "../Record/Record"
 import "./Home.css"
 import AddModal from "../AddModal/AddModal"
 import Settings from "../Settings/Settings"
+import SelectMother from "../SelectMother/SelectMother"
 
 function Home() {
     const [data, setData] = useRecoilState(dataAtom)
@@ -28,6 +29,9 @@ function Home() {
             <div className="info">
                 <div className="chart glass">
                     <Calc />
+                </div>
+                <div>
+                    <SelectMother />
                 </div>
                 <div className="controlls">
                     <div 

@@ -1,44 +1,62 @@
 import { useRecoilState } from "recoil"
 import dataAtom from "../../Atoms/dataAtom"
 import spacer33 from "../../helpers/spacer33"
+import motherAtom from "../../Atoms/motherAtom"
+import { tab } from "@testing-library/user-event/dist/tab"
 
 function Calc(){
     const [data, setData] = useRecoilState(dataAtom)
+    const [mother, setMother] = useRecoilState(motherAtom);
 
-    const userCount = data.users.length
-
+    let tabs = data.records;
     let uneavens = [];
-    for (let i = 0; i < userCount; i++) {
-        for (let j = 0; j < userCount; j++) {
-            if( i !== j ){
-                let talab_i_az_j = data.records
-                    .filter(item=>{
-                        return item.sugar === i && item.shakur === j
-                    })
-                    .reduce((a,b)=> a+b.amount , 0)
-                let bedehi_i_be_j = data.records
-                    .filter(item=>{
-                        return item.sugar === j && item.shakur === i
-                    })
-                    .reduce((a,b)=> a+b.amount , 0)
-                uneavens.push({i:i, j:j, amount:(bedehi_i_be_j - talab_i_az_j)})
+    const users = data.users
+
+    users.forEach((i) => {
+        uneavens[i.id] = [];
+        users.forEach((j) => {
+            uneavens[i.id][j.id] = 0
+        })
+    })
+
+    if ( mother > -1 ) {
+        tabs
+        .filter(tab => tab.shakur != tab.sugar)
+        .forEach((tab) => {
+            uneavens[tab.shakur][mother] += tab.amount
+            if ( tab.sugar != mother ){
+                uneavens[mother][tab.sugar] += tab.amount
             }
-        }
+        });
+    }else{
+        tabs
+        .filter(tab => tab.shakur != tab.sugar)
+        .forEach((tab) => {
+            uneavens[tab.shakur][tab.sugar] += tab.amount
+        });
     }
 
-    return (
-        <ul>
-            {uneavens
-            .filter(item => item.amount>0)
-            .map(item=>{
-                return (
-                    <li key={"bedehi_"+item.id}>
-                        <b>{data.users[item.i].name}</b> should ekh kone <b>{spacer33(parseInt(item.amount))}</b> toman be <b>{data.users[item.j].name}</b>
+    let res = [];
+
+    users.forEach(shakur => {
+        users.forEach(sugar => {
+            if ( uneavens[sugar.id][shakur.id] > 0 && sugar.id > shakur.id) {
+                let r_amount = uneavens[shakur.id][sugar.id] - uneavens[sugar.id][shakur.id]
+                r_amount = (r_amount>0) ? r_amount : -r_amount
+                uneavens[sugar.id][shakur.id] = 0
+                let r_sugar = (r_amount > 0) ? sugar.id : shakur.id
+                let r_shakur = (r_amount > 0) ? shakur.id : sugar.id
+                res.push(
+                    <li key={"bedehi_"+users[r_shakur].name+"_be_"+users[r_sugar].name}>
+                        <b>{users[r_shakur].name}</b> should ekh kone <b>{spacer33(parseInt(r_amount))}</b> toman be <b>{users[r_sugar].name}</b>
                     </li>
                 )
-            })}
-        </ul>
-    )
+            }
+        })
+    })
+
+    return (<ul>{res}</ul>)
+
 }
 
 export default Calc
